@@ -2,7 +2,7 @@
 - 👀 I’m interested in Software Development Technologies includes .NET, React, Angular, javaScript, SQL, Azure
 - 🌱 I’m currently learning React
 - 💞️ I’m looking to collaborate on .NET  and React Projects
-- 📫 How to reach me ... shubhammahore@gmail.com
+- 📫 How to reach me ... twitter @shubhammahore
 
 <!---
 shubhammahore/shubhammahore is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
