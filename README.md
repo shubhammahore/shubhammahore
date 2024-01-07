@@ -15,6 +15,7 @@
   - Fixed: ₹15 Lakh
   - Yearly Incentive: ₹1.8 Lakh
   - Other benefits
+- **BioData:** [![LinkedIn](https://img.shields.io/badge/Detail_BioData-Visit-blue)](https://shubhammahore.github.io/shubhammahore/)
 - **LinkedIn:** [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue)](https://www.linkedin.com/in/shubhammahore/)
 - **Instagram:** [![Instagram](https://img.shields.io/badge/Instagram-Follow-orange)](https://www.instagram.com/shubham.mahore/)
 - **Facebook:** [![Facebook](https://img.shields.io/badge/Facebook-Follow-blue)](https://www.facebook.com/shubhammahore1996/)
