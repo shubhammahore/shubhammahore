@@ -1,12 +1,9 @@
-# 🌟 **Shubham Mahore's Biodata**
-
-## 📋 **Personal Details**
-- 👋 Hi, I’m @shubhammahore
-- 💻 Working in Deloitte as Software Developer
+- 👋 Hi, I’m **Shubham Mahore**
+- 💻 Working in Deloitte as a Software Developer
 - 👀 I’m interested in Software Development Technologies includes .NET, React, SpringBoot Microservice, Java, Angular, javaScript, SQL, Azure, Google Cloud
 - 🌱 I’m currently learning Modern Programming Language Go, React.js, .NET MAUI and Upskilling in different cloud platform
 - 💞️ I’m looking to collaborate on .NET, Java  and React Projects
-- 📫 How to reach me ... LinkedIn https://www.linkedin.com/in/shubhammahore
+- 📫 How to reach me ...
 <!--
 - **DOB:** 09 May 1996
   - **Birth Time:** 09:00 PM
