@@ -1,7 +1,13 @@
 # 🌟 **Shubham Mahore's Biodata**
 
 ## 📋 **Personal Details**
-- **Name:** Shubham Mahore
+- 👋 Hi, I’m @shubhammahore
+- 💻 Working in Deloitte as Software Developer
+- 👀 I’m interested in Software Development Technologies includes .NET, React, SpringBoot Microservice, Java, Angular, javaScript, SQL, Azure, Google Cloud
+- 🌱 I’m currently learning Modern Programming Language Go, React.js, .NET MAUI and Upskilling in different cloud platform
+- 💞️ I’m looking to collaborate on .NET, Java  and React Projects
+- 📫 How to reach me ... LinkedIn https://www.linkedin.com/in/shubhammahore
+<!--
 - **DOB:** 09 May 1996
   - **Birth Time:** 09:00 PM
 - **Height:** 5'11"
@@ -15,12 +21,12 @@
   - Fixed: ₹15 Lakh
   - Yearly Incentive: ₹1.8 Lakh
   - Other benefits
-- **BioData:** [![LinkedIn](https://img.shields.io/badge/Detail_BioData-Visit-blue)](https://shubhammahore.github.io/shubhammahore/)
+-->
+- **Personal Website:** [![LinkedIn](https://img.shields.io/badge/Visit-blue)](https://shubhammahore.github.io/shubhammahore/)
 - **LinkedIn:** [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue)](https://www.linkedin.com/in/shubhammahore/)
 - **Instagram:** [![Instagram](https://img.shields.io/badge/Instagram-Follow-orange)](https://www.instagram.com/shubham.mahore/)
 - **Facebook:** [![Facebook](https://img.shields.io/badge/Facebook-Follow-blue)](https://www.facebook.com/shubhammahore1996/)
-- **Mobile Number:** XXXXXXXXXX
-
+<!--
 ## 🌈 **Family Details**
 - **Family Values:** Traditional
 - **Family Status:** Middle-class family
@@ -36,4 +42,5 @@
 ## 🏡 **Residence Details**
 - **Present Location:** Bangalore, Karnataka
 - **Home Town:** Chhindwara, Madhya Pradesh
+-->
 
