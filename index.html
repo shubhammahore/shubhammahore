@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="https://github.com/shubhammahore.png" type="image/png">
-    <title>Personal Website - Shubham Mahore 😎 </title>
+    <link rel="icon" href="https://github.com/shubhammahore.png" type="image/png" sizes="16x16 32x32 48x48">
+    <title>Personal Blog - Shubham Mahore😎 </title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -16,124 +16,51 @@
             font-family: Arial, sans-serif;
         }
 
-        .profile-card {
-    max-width: 600px;
-    margin: 20px auto;
-    background-color: #fff;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.profile-header {
-    position: relative; /* Fix the typo here */
-    text-align: center;
-    background-color: #4CAF50;
-    color: #fff;
-    padding: 90px 0;
-}
-
-    .profile-header img {
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    border: 3px solid #fff;
-    position: absolute;
-    top: 0; /* Set top to 0 to fix the image at the top */
-    left: 50%; /* Center the image horizontally */
-    transform: translateX(-50%); /* Adjust the transform to center the image horizontally */
-}
-        .profile-info {
-            padding: 20px;
-        }
-
-        .profile-info h2 {
-            color: #4CAF50;
-            margin-bottom: 10px;
-        }
-
-        .info-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .info-list li {
-            margin-bottom: 15px;
-        }
-
-        .info-list li strong {
-            display: inline-block;
-            width: 120px;
-            font-weight: bold;
-        }
-
-        .social-links a {
-            display: inline-block;
-            margin-right: 10px;
-            color: #320dec;
-        }
-
-        @media (max-width: 768px) {
-            .profile-card {
-                margin: 20px 10px;
-            }
-        }
-
-        .profile-info {
-            padding: 20px;
-        }
-
-        .profile-info h2 {
-            color: #4CAF50;
-            margin-bottom: 10px;
-        }
-
-        .info-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .info-list li {
-            margin-bottom: 15px;
-        }
-
-        .info-list li strong {
-            display: inline-block;
-            width: 120px;
-            font-weight: bold;
-        }
-
-        .social-links a {
-            display: inline-block;
-            margin-right: 10px;
-            color: #320dec;
-        }
-
-        @media (max-width: 768px) {
-            .profile-card {
-                margin: 20px 10px;
-            }
-        }
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .button {
+            margin: 10px;
+            padding: 15px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            background-color: olive;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            /* Initial box shadow */
+        }
+
+        .button:hover {
+            background-color: darkolivegreen;
+            transform: scale(1.05);
+            box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.3);
+            /* Increased box shadow on hover */
+            /* background-color: #1565C0; /* Darkened background color on hover */
+            cursor: pointer;
         }
 
         h1 {
             text-align: center;
-            color: #333;
+            color: olive;
         }
 
-        .grid {
+        .picture-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 10px;
         }
 
-        .profile-picture {
+        .grid-images {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -141,93 +68,69 @@
             transition: transform 0.2s ease-in-out;
         }
 
-        .profile-picture:hover {
+        .grid-images:hover {
             transform: scale(1.1);
         }
 
         @media (max-width: 768px) {
-            .grid {
+            .picture-grid {
                 grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             }
         }
+
+        .author {
+            font-size: 9px;
+            color: #bebebe;
+            /* Lighter color for the author line */
+            margin-top: 8px;
+        }
+
+        .author-name {
+            font-size: 8px;
+            /* Smaller font size for the author's name */
+            color: #bebebe;
+            /* Darker color for the author's name */
+            margin-left: 1px;
+            /* Add some space between "Author:" and the name */
+        }
     </style>
-    <title>Profile Pictures Grid 😎 </title>
 </head>
+
 <body>
-    <div class="profile-card">
-        <div class="profile-header">
-            <img src="https://github.com/shubhammahore.png" alt="Profile Picture">      
-        </div>
-        <div class="profile-info">
-            <h2>Personal Details</h2>
-            <ul class="info-list">
-                <li><strong>Name:</strong> Shubham Mahore</li>
-<!--                 <li><strong>Date of Birth:</strong> 09 May 1996, 09:00 PM</li> -->
-<!--                 <li><strong>Height:</strong> 5"11'</li> -->
-<!--                 <li><strong>Gender:</strong> Male</li> -->
-<!--                 <li><strong>Marital Status:</strong> Never Married</li> -->
-<!--                 <li><strong>Caste:</strong> KALAR</li> -->
-<!--                 <li><strong>Education:</strong> B-Tech</li> -->
-<!--                 <li><strong>Employed In:</strong> Deloitte</li> -->
-                <li><strong>Occupation:</strong> Software Engineer at Deloitte</li>
-<!--                 <li><strong>Package:</strong> 17 Lakh per Annum</li> -->
-            </ul>
-
-            <h2>Social Media</h2>
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/shubhammahore/" target="_blank">linkedin.com/in/shubhammahore</a>
-                <a href="https://www.instagram.com/shubham.mahore/" target="_blank">instagram.com/shubham.mahore</a>
-                <a href="https://www.facebook.com/shubhammahore1996/" target="_blank">facebook.com/shubhammahore1996</a>
-            </div>
-
-<!--             <h2>Family Details</h2>
-            <ul class="info-list">
-                <li><strong>Family Values:</strong> Traditional</li>
-                <li><strong>Family Status:</strong> Middle-class family</li>
-                <li><strong>Father's Status:</strong> Late Chandrabhan Mahore (Teacher - Head Master Govt. School)</li>
-                <li><strong>Mother's Status:</strong> Late Kanti Mahore</li>
-                <li><strong>Brother's Status:</strong> Yogendra Mahore (Working in MNC Pune)</li>
-                <li><strong>Sister's Status:</strong> Mrs. Vinita Mahore (Housewife)</li>
-                <li><strong>Her Husband:</strong> Mr. Manoj Mahore (Professor+HOD in Priyadarshini Engineering College Nagpur)</li>
-                <li><strong>Local Guardian (Chachaji):</strong> Mr. Dharmendra Mahore (Govt. Job: Accountant/Tax Incharge At Nagar Nigam Chhindwara)</li>
-            </ul> -->
-<!-- 
-            <h2>Residence Details</h2>
-            <ul class="info-list">
-                <li><strong>Presently resident:</strong> Bangalore, Karnataka</li>
-                <li><strong>Home Town:</strong> Chhindwara, Madhya Pradesh</li>
-            </ul> -->
+    <header>
+        <h1>Welcome to My Blog</h1>
+        <p class="author">Author: <span class="author-name">Shubham Mahore</span></p>
+    </header>
+    <div class="container">
+        <button class="button" type="button" onclick="navigateTo('imagetobase64converter.html')">Image to Base64
+            Converter</button>
+        <button class="button" type="button" onclick="navigateTo('heictojpegconverter.html')">ZHEIC to JPEG
+            Converter</button>
+        <button class="button" type="button"
+            onclick="navigateTo('https://shubhammahore.wordpress.com/')">Wordpress</button>
+        <button class="button" type="button" onclick="navigateTo('https://github.com/shubhammahore')">Github
+            Profile</button>
+        <button class="button" type="button"
+            onclick="navigateTo('https://shubhammahore.github.io/deploy-react-app-to-github-pages')">React.js Website -
+            Just Started More Work needs to be done</button>
+    </div>
+    <script>
+        function navigateTo(url) {
+            window.location.href = url;
+        }
+    </script>
+    <div class="container">
+        <h1>Picture Grid - Samples!</h1>
+        <div class="picture-grid">
+            <img class='grid-images' src='https://p0.pxfuel.com/preview/545/509/245/blog-blogging-business-web.jpg'>
+            <img class='grid-images' src='https://p0.pxfuel.com/preview/546/322/393/5be9699334ac2.jpg'>
+            <img class='grid-images'
+                src='https://p1.pxfuel.com/preview/789/997/85/coding-programming-code-sublime-text-work.jpg'>
+            <img class='grid-images'
+                src='https://e1.pxfuel.com/desktop-wallpaper/778/504/desktop-wallpaper-1600x900-kimetsu-no-yaiba-anime-1600x900-resolution-backgrounds-and-anime-1600x900.jpg'>
+            <!-- Add more image tags as needed -->
         </div>
     </div>
-    
-<div class="container">
-    <h1>Picture Grid - Samples!!</h1>
-    <div class="grid">
-<!--         <img class='profile-picture' src='https://github.com/shubhammahore.png'> -->
-        <img class='profile-picture' src='1.jpg'>
-        <img class='profile-picture' src='2.jpg'>
-        <img class='profile-picture' src='3.jpg'>
-        <img class='profile-picture' src='4.jpg'>
-<!--         <img class='profile-picture' src='5.jpg'>
-        <img class='profile-picture' src='6.jpg'>
-        <img class='profile-picture' src='7.jpg'>
-        <img class='profile-picture' src='8.jpg'>
-        <img class='profile-picture' src='9.jpg'>     -->
-        <img class='profile-picture' src='https://picsum.photos/200/306'>
-        <img class='profile-picture' src='https://picsum.photos/200/303'>
-        <img class='profile-picture' src='https://picsum.photos/200/311'>
-        <img class='profile-picture' src='https://picsum.photos/200/301'>
-        <!-- Add more image tags as needed -->
-    </div>
-</div>
-<a href="about.html"><h1>About Me</h1></a>
-<a href="imagetobase64converter.html"><h1>Image to Base64 Converter</h1></a>
-<a href="heictojpegconverter.html"><h1>HEIC to JPEG Converter</h1></a>
-
-<!-- <a href="README.md"><h1>Readme.md</h1></a> -->
-<a href="https://shubhammahore.wordpress.com/"><h1>Wordpress</h1></a>
-<a href="https://shubhammahore.github.io/shubhammahore/"><h1>Github Page</h1></a>
-<a href="https://github.com/shubhammahore"><h1>Github Profile</h1></a>
-<a href="https://shubhammahore.github.io/deploy-react-app-to-github-pages"><h1>Personal Blog - Just Started More Work needs to be done</h1></a>
 </body>
+
 </html>
