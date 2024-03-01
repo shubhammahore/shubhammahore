@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image to Base64 Converter - JavaScript</title>
+
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    label {
+      cursor: pointer;
+      background-color: #3498db;
+      color: #fff;
+      padding: 10px 15px;
+      border-radius: 5px;
+      display: inline-block;
+    }
+
+    button {
+      background-color: #2ecc71;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    hr {
+      border: 1px solid #ccc;
+      margin: 20px 0;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    #imageContainer {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Image to Base64 Converter</h1>
+
+<!-- Image to Base64 Conversion -->
+<label id="fileLabel" for="imageInput">Choose an Image</label>
+<input type="file" id="imageInput" accept="image/*" onchange="updateFileName()">
+<button onclick="convertToBase64()">Convert to Base64</button>
+<hr/>
+<input type="text" id="base64Input" placeholder="Enter or Paste Base64 String">
+<button onclick="renderImage()">Render Image</button>
+<div id="imageContainer"></div>
+
+<script>
+  function updateFileName() {
+    var fileLabel = document.getElementById('fileLabel');
+    var inputElement = document.getElementById('imageInput');
+    var fileName = inputElement.files[0] ? inputElement.files[0].name : "Choose an Image";
+    fileLabel.textContent = fileName;
+  }
+function convertToBase64() {
+  // Get the input element
+  var inputElement = document.getElementById('imageInput');
+
+  // Ensure a file is selected
+  if (inputElement.files.length > 0) {
+    // Get the selected file
+    var file = inputElement.files[0];
+
+    // Create a FileReader
+    var reader = new FileReader();
+
+    // Define a callback function to handle the file reading
+    reader.onload = function (e) {
+      // Get the base64 string from the result
+      var base64String = e.target.result;
+
+      // Display the base64 string in the input field
+      document.getElementById('base64Input').value = base64String;
+    };
+
+    // Read the file as a Data URL, triggering the onload callback
+    reader.readAsDataURL(file);
+  } else {
+    alert("Please select an image file.");
+  }
+}
+
+function renderImage() {
+  // Get the input element
+  var base64Input = document.getElementById('base64Input');
+  
+  // Get the image container
+  var imageContainer = document.getElementById('imageContainer');
+  
+  // Get the entered base64 string
+  var base64String = base64Input.value.trim();
+  
+  // Check if the base64 string is not empty
+  if (base64String !== "") {
+    // Create an image element
+    var image = new Image();
+    
+    // Set the source of the image to the base64 string
+    image.src = base64String;
+    
+    // Clear the previous content in the image container
+    imageContainer.innerHTML = '';
+    
+    // Append the image to the image container
+    imageContainer.appendChild(image);
+  } else {
+    alert("Please enter a valid base64 string.");
+  }
+}
+
+</script>
+
+</body>
+</html>
