@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HEIC to JPEG Converter</title>
+
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #3498db;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    label {
+      cursor: pointer;
+      background-color: #3498db;
+      color: #fff;
+      padding: 10px 15px;
+      border-radius: 5px;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    button {
+      background-color: #2ecc71;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 0 10px;
+    }
+
+    hr {
+      border: 1px solid #ccc;
+      margin: 20px 0;
+    }
+
+    #jpegContainer {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>HEIC to JPEG Converter</h1>
+
+<label for="heicInput">Choose a HEIC Image</label>
+<input type="file" id="heicInput" accept=".heic">
+<button onclick="convertToJPEG()">Convert to JPEG</button>
+<button onclick="downloadJPEG()">Download JPEG</button>
+<hr />
+<div id="jpegContainer"></div>
+
+<script src="heic2any.js"></script>
+<script>
+  var convertedBlob = null; // Store the converted JPEG blob globally
+
+  function convertToJPEG() {
+    var heicInput = document.getElementById('heicInput');
+    var jpegContainer = document.getElementById('jpegContainer');
+
+    if (heicInput.files.length > 0) {
+      var heicFile = heicInput.files[0];
+
+      heic2any({
+        blob: heicFile,
+        toType: "image/jpeg",
+        quality: 0.7 // Adjust the quality as needed (0.0 to 1.0)
+      })
+      .then(function (jpegBlob) {
+        // Store the converted blob globally
+        convertedBlob = jpegBlob;
+
+        // Create an image element
+        var image = new Image();
+
+        // Set the source of the image to the converted JPEG blob
+        image.src = URL.createObjectURL(jpegBlob);
+
+        // Append the image to the container
+        jpegContainer.innerHTML = '';
+        jpegContainer.appendChild(image);
+      })
+      .catch(function (error) {
+        console.error("Error converting HEIC to JPEG:", error);
+      });
+    } else {
+      alert("Please select a HEIC file.");
+    }
+  }
+
+  function downloadJPEG() {
+    if (convertedBlob) {
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(convertedBlob);
+      a.download = 'converted_image.jpg';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    } else {
+      alert("No converted JPEG image to download. Please convert a HEIC file first.");
+    }
+  }
+</script>
+
+</body>
+</html>
