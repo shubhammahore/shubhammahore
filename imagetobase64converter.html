@@ -43,14 +43,29 @@
       margin: 20px 0;
     }
 
-    input[type="text"] {
+    textarea {
       width: 100%;
-      padding: 10px;
+      height: 150px;
+      resize: vertical;
+      margin-top: 20px;
       box-sizing: border-box;
     }
 
     #imageContainer {
       margin-top: 20px;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 20px 0;
+    }
+
+    @media screen and (max-width: 600px) {
+      textarea {
+        height: 100px;
+      }
     }
   </style>
 </head>
@@ -63,7 +78,10 @@
 <input type="file" id="imageInput" accept="image/*" onchange="updateFileName()">
 <button onclick="convertToBase64()">Convert to Base64</button>
 <hr/>
-<input type="text" id="base64Input" placeholder="Enter or Paste Base64 String">
+
+<!-- Editable Text Area for Base64 Input -->
+<textarea id="base64Input" placeholder="Enter or Paste Base64 String"></textarea>
+
 <button onclick="renderImage()">Render Image</button>
 <div id="imageContainer"></div>
 
@@ -74,62 +92,62 @@
     var fileName = inputElement.files[0] ? inputElement.files[0].name : "Choose an Image";
     fileLabel.textContent = fileName;
   }
-function convertToBase64() {
-  // Get the input element
-  var inputElement = document.getElementById('imageInput');
 
-  // Ensure a file is selected
-  if (inputElement.files.length > 0) {
-    // Get the selected file
-    var file = inputElement.files[0];
+  function convertToBase64() {
+    // Get the input element
+    var inputElement = document.getElementById('imageInput');
 
-    // Create a FileReader
-    var reader = new FileReader();
+    // Ensure a file is selected
+    if (inputElement.files.length > 0) {
+      // Get the selected file
+      var file = inputElement.files[0];
 
-    // Define a callback function to handle the file reading
-    reader.onload = function (e) {
-      // Get the base64 string from the result
-      var base64String = e.target.result;
+      // Create a FileReader
+      var reader = new FileReader();
 
-      // Display the base64 string in the input field
-      document.getElementById('base64Input').value = base64String;
-    };
+      // Define a callback function to handle the file reading
+      reader.onload = function (e) {
+        // Get the base64 string from the result
+        var base64String = e.target.result;
 
-    // Read the file as a Data URL, triggering the onload callback
-    reader.readAsDataURL(file);
-  } else {
-    alert("Please select an image file.");
+        // Display the base64 string in the textarea
+        document.getElementById('base64Input').value = base64String;
+      };
+
+      // Read the file as a Data URL, triggering the onload callback
+      reader.readAsDataURL(file);
+    } else {
+      alert("Please select an image file.");
+    }
   }
-}
 
-function renderImage() {
-  // Get the input element
-  var base64Input = document.getElementById('base64Input');
+  function renderImage() {
+    // Get the input element
+    var base64Input = document.getElementById('base64Input');
   
-  // Get the image container
-  var imageContainer = document.getElementById('imageContainer');
+    // Get the image container
+    var imageContainer = document.getElementById('imageContainer');
   
-  // Get the entered base64 string
-  var base64String = base64Input.value.trim();
+    // Get the entered base64 string
+    var base64String = base64Input.value.trim();
   
-  // Check if the base64 string is not empty
-  if (base64String !== "") {
-    // Create an image element
-    var image = new Image();
+    // Check if the base64 string is not empty
+    if (base64String !== "") {
+      // Create an image element
+      var image = new Image();
     
-    // Set the source of the image to the base64 string
-    image.src = base64String;
+      // Set the source of the image to the base64 string
+      image.src = base64String;
     
-    // Clear the previous content in the image container
-    imageContainer.innerHTML = '';
+      // Clear the previous content in the image container
+      imageContainer.innerHTML = '';
     
-    // Append the image to the image container
-    imageContainer.appendChild(image);
-  } else {
-    alert("Please enter a valid base64 string.");
+      // Append the image to the image container
+      imageContainer.appendChild(image);
+    } else {
+      alert("Please enter a valid base64 string.");
+    }
   }
-}
-
 </script>
 
 </body>

@@ -7,55 +7,93 @@
 
   <style>
     body {
-      font-family: 'Arial', sans-serif;
-      margin: 20px;
-      text-align: center;
-    }
+  font-family: 'Arial', sans-serif;
+  margin: 20px;
+  text-align: center;
+}
 
-    h1 {
-      color: #3498db;
-    }
+h1 {
+  color: #3498db;
+}
 
-    input[type="file"] {
-      display: none;
-    }
+input[type="file"] {
+  display: none;
+}
 
-    label {
-      cursor: pointer;
-      background-color: #3498db;
-      color: #fff;
-      padding: 10px 15px;
-      border-radius: 5px;
-      display: inline-block;
-      margin-bottom: 10px;
-    }
+label {
+  cursor: pointer;
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 5px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
 
-    button {
-      background-color: #2ecc71;
-      color: #fff;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      margin: 0 10px;
-    }
+button {
+  background-color: #2ecc71;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 10px;
+}
 
-    hr {
-      border: 1px solid #ccc;
-      margin: 20px 0;
-    }
+hr {
+  border: 1px solid #ccc;
+  margin: 20px 0;
+}
 
-    #jpegContainer {
-      margin-top: 20px;
-    }
+#jpegContainer {
+  margin-top: 20px;
+}
+
+/* Style for the rendered image */
+#jpegContainer img {
+  max-width: 100%;
+  max-height: 100vh; /* Set maximum height to the viewport height */
+  height: auto;
+}
+
+/* Media query for smaller devices */
+@media only screen and (max-width: 600px) {
+  body {
+    margin: 10px;
+  }
+}
+
+/* Style for displaying the selected file name */
+#fileName {
+  font-style: italic;
+  color: #777;
+  margin-top: 10px;
+}
+/* Media query for smaller devices */
+@media only screen and (max-width: 600px) {
+  body {
+    margin: 10px;
+  }
+
+  h1 {
+    font-size: 24px; /* Adjust font size for smaller screens */
+  }
+
+  label, button {
+    font-size: 14px; /* Adjust font size for smaller screens */
+    padding: 8px 12px; /* Adjust padding for smaller screens */
+  }
+}
+
   </style>
 </head>
 <body>
 
 <h1>HEIC to JPEG Converter</h1>
 
-<label for="heicInput">Choose a HEIC Image</label>
-<input type="file" id="heicInput" accept=".heic">
+<label for="heicInput" id="fileInputLabel">Choose a HEIC Image</label>
+<input type="file" id="heicInput" accept=".heic" onchange="updateFileName()">
+<div id="fileName"></div>
 <button onclick="convertToJPEG()">Convert to JPEG</button>
 <button onclick="downloadJPEG()">Download JPEG</button>
 <hr />
@@ -90,6 +128,9 @@
         // Append the image to the container
         jpegContainer.innerHTML = '';
         jpegContainer.appendChild(image);
+          // Update the displayed file name
+  var fileNameDisplay = document.getElementById('fileName');
+  fileNameDisplay.textContent = 'Selected File: ' + heicFile.name;
       })
       .catch(function (error) {
         console.error("Error converting HEIC to JPEG:", error);
@@ -111,6 +152,20 @@
       alert("No converted JPEG image to download. Please convert a HEIC file first.");
     }
   }
+  function updateFileName() {
+    var heicInput = document.getElementById('heicInput');
+    var fileInputLabel = document.getElementById('fileInputLabel');
+    var fileNameDisplay = document.getElementById('fileName');
+
+    if (heicInput.files.length > 0) {
+      var heicFile = heicInput.files[0];
+      fileInputLabel.textContent = 'Selected File: ' + heicFile.name;
+    } else {
+      fileInputLabel.textContent = 'Choose a HEIC Image';
+    }
+    fileNameDisplay.textContent = ''; // Clear previous file name display
+  }
+
 </script>
 
 </body>
