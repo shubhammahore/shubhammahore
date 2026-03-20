@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MBA 4th Sem Exam Timetable — Light</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    background: #e8e8e8;
+    font-family: 'Outfit', 'Poppins', sans-serif;
+  }
+
+  .poster {
+    width: 1320px;
+    height: 2868px;
+    background: linear-gradient(170deg, #fdfcfb 0%, #f0e6ff 25%, #e8f4fd 50%, #fef9e7 75%, #fdf2f8 100%);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 80px 65px 60px;
+  }
+
+  /* ── Decorative Background Blobs ── */
+  .blob-1 {
+    position: absolute;
+    top: -100px; right: -80px;
+    width: 550px; height: 550px;
+    background: radial-gradient(circle, rgba(255,154,139,0.18), transparent 70%);
+    border-radius: 50%;
+  }
+  .blob-2 {
+    position: absolute;
+    top: 30%; left: -120px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(130,120,255,0.12), transparent 70%);
+    border-radius: 50%;
+  }
+  .blob-3 {
+    position: absolute;
+    top: 55%; right: -60px;
+    width: 420px; height: 420px;
+    background: radial-gradient(circle, rgba(46,213,180,0.12), transparent 70%);
+    border-radius: 50%;
+  }
+  .blob-4 {
+    position: absolute;
+    bottom: -80px; left: 30%;
+    width: 480px; height: 480px;
+    background: radial-gradient(circle, rgba(255,200,55,0.12), transparent 70%);
+    border-radius: 50%;
+  }
+  .blob-5 {
+    position: absolute;
+    bottom: 20%; right: 25%;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(255,120,150,0.08), transparent 70%);
+    border-radius: 50%;
+  }
+
+  /* Subtle dot grid */
+  .dots-pattern {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(0,0,0,0.04) 1.2px, transparent 1.2px);
+    background-size: 36px 36px;
+    z-index: 0;
+  }
+
+  /* Side gradient stripe */
+  .side-stripe {
+    position: absolute;
+    left: 0; top: 0; bottom: 0; width: 8px;
+    background: linear-gradient(180deg, #ff9a8b, #ffd166, #06d6a0, #8278ff, #ff6b9d);
+    z-index: 3;
+  }
+
+  /* Top-right corner decorative shape */
+  .corner-deco {
+    position: absolute;
+    top: 0; right: 0;
+    width: 220px; height: 220px;
+    background: linear-gradient(135deg, rgba(255,154,139,0.25), rgba(255,209,102,0.15));
+    border-radius: 0 0 0 100%;
+    z-index: 1;
+  }
+
+  /* ── Header ── */
+  .header {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 45px;
+  }
+
+  .header-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #ff6b6b, #ff9a76);
+    color: white;
+    padding: 12px 36px;
+    border-radius: 50px;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+    box-shadow: 0 6px 25px rgba(255,107,107,0.25);
+  }
+
+  .header h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 64px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #6c3ce0, #e0399a, #ff6b6b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.12;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+  }
+
+  .header-info {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .info-chip {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,255,255,0.75);
+    border: 1.5px solid rgba(0,0,0,0.06);
+    padding: 12px 26px;
+    border-radius: 50px;
+    color: #444;
+    font-size: 20px;
+    font-weight: 600;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+
+  .info-chip .ic { font-size: 22px; }
+
+  .divider-line {
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, transparent, rgba(108,60,224,0.2), rgba(255,107,107,0.2), rgba(6,214,160,0.2), transparent);
+    margin-top: 35px;
+    border-radius: 4px;
+  }
+
+  /* ── Content ── */
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ── Sections ── */
+  .section {
+    background: rgba(255,255,255,0.55);
+    border-radius: 28px;
+    padding: 30px 30px 24px;
+    border: 1.5px solid rgba(0,0,0,0.04);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 22px;
+  }
+
+  .section-icon {
+    width: 60px; height: 60px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  }
+
+  .section-title {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .section-subtitle {
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-top: 2px;
+    opacity: 0.6;
+  }
+
+  /* Section Themes */
+  .section.common .section-icon { background: linear-gradient(135deg, #ff9a44, #ff6b35); }
+  .section.common .section-title { color: #d45d00; }
+  .section.common .section-subtitle { color: #d45d00; }
+
+  .section.finance .section-icon { background: linear-gradient(135deg, #06d6a0, #00b894); }
+  .section.finance .section-title { color: #00895e; }
+  .section.finance .section-subtitle { color: #00895e; }
+
+  .section.hr .section-icon { background: linear-gradient(135deg, #8278ff, #6c5ce7); }
+  .section.hr .section-title { color: #5a3fd6; }
+  .section.hr .section-subtitle { color: #5a3fd6; }
+
+  /* ── Exam Cards ── */
+  .exam-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .exam-card {
+    background: rgba(255,255,255,0.8);
+    border-radius: 20px;
+    padding: 22px 26px;
+    border-left: 6px solid;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 14px rgba(0,0,0,0.04);
+    transition: transform 0.2s;
+  }
+
+  .section.common .exam-card { border-left-color: #ff9a44; }
+  .section.finance .exam-card { border-left-color: #06d6a0; }
+  .section.hr .exam-card { border-left-color: #8278ff; }
+
+  .exam-left {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .exam-code {
+    font-size: 16px;
+    font-weight: 700;
+    padding: 4px 18px;
+    border-radius: 20px;
+    display: inline-block;
+    width: fit-content;
+    letter-spacing: 1.2px;
+  }
+
+  .section.common .exam-code { background: rgba(255,154,68,0.12); color: #d45d00; }
+  .section.finance .exam-code { background: rgba(6,214,160,0.12); color: #00895e; }
+  .section.hr .exam-code { background: rgba(130,120,255,0.12); color: #5a3fd6; }
+
+  .exam-name {
+    font-size: 22px;
+    color: #2d2d3a;
+    font-weight: 700;
+    line-height: 1.35;
+    margin-top: 2px;
+  }
+
+  .exam-right {
+    text-align: center;
+    flex-shrink: 0;
+    margin-left: 20px;
+    min-width: 110px;
+  }
+
+  .exam-date-num {
+    font-size: 42px;
+    font-weight: 900;
+    line-height: 1;
+  }
+
+  .section.common .exam-date-num { color: #ff7b29; }
+  .section.finance .exam-date-num { color: #00b894; }
+  .section.hr .exam-date-num { color: #7c6ff7; }
+
+  .exam-month {
+    font-size: 17px;
+    color: #666;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin-top: 2px;
+  }
+
+  .exam-day {
+    font-size: 14px;
+    color: #999;
+    font-weight: 600;
+    margin-top: 3px;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    position: relative;
+    z-index: 2;
+    margin-top: 40px;
+    text-align: center;
+  }
+
+  .footer-warning {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255,107,107,0.08);
+    border: 2px solid rgba(255,107,107,0.18);
+    padding: 16px 36px;
+    border-radius: 18px;
+    color: #d63031;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 22px;
+  }
+
+  .footer-luck {
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #6c3ce0, #e0399a, #ff6b6b, #ffa502);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 1.5px;
+  }
+
+  .footer-sub {
+    color: #aaa;
+    font-size: 17px;
+    margin-top: 10px;
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+
+<div class="poster">
+  <!-- Background -->
+  <div class="dots-pattern"></div>
+  <div class="blob-1"></div>
+  <div class="blob-2"></div>
+  <div class="blob-3"></div>
+  <div class="blob-4"></div>
+  <div class="blob-5"></div>
+  <div class="side-stripe"></div>
+  <div class="corner-deco"></div>
+
+  <!-- ── Header ── -->
+  <div class="header">
+    <div class="header-badge">📋 Final Examination 2026</div>
+    <h1>MBA 4th Sem<br>Exam Timetable</h1>
+    <div class="header-info">
+      <div class="info-chip"><span class="ic">🎓</span> Finance + HR</div>
+      <div class="info-chip"><span class="ic">🕙</span> 10:00 AM – 1:00 PM</div>
+      <div class="info-chip"><span class="ic">📅</span> Apr – May 2026</div>
+    </div>
+    <div class="divider-line"></div>
+  </div>
+
+  <!-- ── Content ── -->
+  <div class="content">
+
+    <!-- Common -->
+    <div class="section common">
+      <div class="section-header">
+        <div class="section-icon">📖</div>
+        <div>
+          <div class="section-title">Common Subjects</div>
+          <div class="section-subtitle">Compulsory for All</div>
+        </div>
+      </div>
+      <div class="exam-cards">
+        <div class="exam-card">
+          <div class="exam-left">
+            <span class="exam-code">MC-401</span>
+            <div class="exam-name">Business Legislation</div>
+          </div>
+          <div class="exam-right">
+            <div class="exam-date-num">10</div>
+            <div class="exam-month">Apr 2026</div>
+            <div class="exam-day">Friday</div>
+          </div>
+        </div>
+        <div class="exam-card">
+          <div class="exam-left">
+            <span class="exam-code">MC-402</span>
+            <div class="exam-name">Strategic Management</div>
+          </div>
+          <div class="exam-right">
+            <div class="exam-date-num">13</div>
+            <div class="exam-month">Apr 2026</div>
+            <div class="exam-day">Monday</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Finance -->
+    <div class="section finance">
+      <div class="section-header">
+        <div class="section-icon">💰</div>
+        <div>
+          <div class="section-title">Finance</div>
+          <div class="section-subtitle">Specialization Papers</div>
+        </div>
+      </div>
+      <div class="exam-cards">
+        <div class="exam-card">
+          <div class="exam-left">
+            <span class="exam-code">MC-403F</span>
+            <div class="exam-name">International Finance</div>
+          </div>
+          <div class="exam-right">
+            <div class="exam-date-num">24</div>
+            <div class="exam-month">Apr 2026</div>
+            <div class="exam-day">Friday</div>
+          </div>
+        </div>
+        <div class="exam-card">
+          <div class="exam-left">
+            <span class="exam-code">MC-404F</span>
+            <div class="exam-name">Derivatives & Risk Mgmt</div>
+          </div>
+          <div class="exam-right">
+            <div class="exam-date-num">27</div>
+            <div class="exam-month">Apr 2026</div>
+            <div class="exam-day">Monday</div>
+          </div>
+        </div>
+        <div class="exam-card">
+          <div class="exam-left">
+            <span class="exam-code">MC-405F</span>
+            <div class="exam-name">Investment Analysis & Portfolio Mgmt</div>
+          </div>
+          <div class="exam-right">
+            <div class="exam-date-num">29</div>
+            <div class="exam-month">Apr 2026</div>
+            <div class="exam-day">Wednesday</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HR -->
+    <div class="section hr">
+      <div class="section-header">
+        <div class="section-icon">👥</div>
+        <div>
+          <div class="section-title">Human Resource</div>
+          <div class="section-subtitle">Specialization Papers</div>
+        </div>
+      </div>
+      <div class="exam-cards">
+        <div class="exam-card">
+          <div class="exam-left">
+            <span class="exam-code">MC-403H</span>
+            <div class="exam-name">Compensation Management</div>
+          </div>
+          <div class="exam-right">
+            <div class="exam-date-num">01</div>
+            <div class="exam-month">May 2026</div>
+            <div class="exam-day">Friday</div>
+          </div>
+        </div>
+        <div class="exam-card">
+          <div class="exam-left">
+            <span class="exam-code">MC-404H</span>
+            <div class="exam-name">Training & Development</div>
+          </div>
+          <div class="exam-right">
+            <div class="exam-date-num">04</div>
+            <div class="exam-month">May 2026</div>
+            <div class="exam-day">Monday</div>
+          </div>
+        </div>
+        <div class="exam-card">
+          <div class="exam-left">
+            <span class="exam-code">MC-405H</span>
+            <div class="exam-name">Org Change & Development</div>
+          </div>
+          <div class="exam-right">
+            <div class="exam-date-num">06</div>
+            <div class="exam-month">May 2026</div>
+            <div class="exam-day">Wednesday</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── Footer ── -->
+  <div class="footer">
+    <div class="footer-warning">⚠️ Carry your Hall Ticket & College ID Card</div>
+    <div class="footer-luck">✨ ALL THE BEST! STUDY HARD & ACE IT! 💪🔥</div>
+    <div class="footer-sub">🍀 Best wishes from your batchmates</div>
+  </div>
+
+</div>
+
+</body>
+</html>
